@@ -6,6 +6,7 @@ Release:	1
 License:	GPL
 Group:		Applications/Math
 Source0:	http://yacas.sourceforge.net/backups/%{name}-%{version}.tar.gz
+# Source0-md5:	282e705b3a7466d31dc7ee6a76158d21
 Source1:	%{name}.desktop
 Patch0:		%{name}-DESTDIR.patch
 URL:		http://yacas.sourceforge.net/
