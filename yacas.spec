@@ -41,7 +41,7 @@ precyzji.
 rm -rf missing
 aclocal
 autoconf
-automake -a -c
+automake -a -c -f
 %configure \
 	--enable-gmp
 %{__make}
