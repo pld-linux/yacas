@@ -1,0 +1,12 @@
+diff -ur yacas-1.0.47/configure.in yacas-1.0.47.new/configure.in
+--- yacas-1.0.47/configure.in	Sun May 20 22:51:13 2001
++++ yacas-1.0.47.new/configure.in	Thu Nov 29 23:43:15 2001
+@@ -40,7 +40,7 @@
+ # Choice of arbitrary precision library
+ AC_ARG_ENABLE(gmp, [  --enable-gmp            use GNU MP [default=no]])
+ if test "$enable_gmp" = "yes" ; then
+-	AC_CHECK_LIB(gmp, mpz_init, have_gmp=yes, have_gmp=no)
++	AC_CHECK_LIB(gmp, __gmpz_init, have_gmp=yes, have_gmp=no)
+ 	if test "$have_gmp" = "no" ; then
+ 		AC_MSG_ERROR([GNU MP library not found])
+ 	fi
