@@ -40,8 +40,8 @@ precyzji.
 %build
 rm -rf missing
 aclocal
-autoconf
-automake -a -c -f
+%{__autoconf}
+%{__automake}
 %configure \
 	--enable-gmp
 %{__make}
