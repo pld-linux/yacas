@@ -36,7 +36,6 @@ precyzji.
 %setup -q
 
 %build
-rm -rf missing
 %{__aclocal}
 %{__autoconf}
 %{__automake}
@@ -46,11 +45,13 @@ rm -rf missing
 %install
 rm -rf $RPM_BUILD_ROOT
 
-%{__make} -C src install DESTDIR=$RPM_BUILD_ROOT
-%{__make} -C scripts install DESTDIR=$RPM_BUILD_ROOT
+%{__make} -C src install \
+	DESTDIR=$RPM_BUILD_ROOT
+%{__make} -C scripts install \
+	DESTDIR=$RPM_BUILD_ROOT
 
-install -d $RPM_BUILD_ROOT%{_desktopdir}/Scientific/Mathematics
-install %{SOURCE1} $RPM_BUILD_ROOT%{_desktopdir}/Scientific/Mathematics/%{name}.desktop
+install -d $RPM_BUILD_ROOT%{_desktopdir}
+install %{SOURCE1} $RPM_BUILD_ROOT%{_desktopdir}
 
 rm -rf manualmaker/{in,*.c,Makefile*,manualmaker,newhelp,styleplain,yacasinit.ys} \
 	docs/Makefile*
@@ -65,10 +66,10 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %doc AUTHORS README docs
 %attr(755,root,root) %{_bindir}/*
-%attr(755,root,root) %{_libdir}/lib*.so.*
+%attr(755,root,root) %{_libdir}/lib*.so.*.*.*
 %{_libdir}/lib*.la
 %dir %{_libdir}/yacas
 %attr(755,root,root) %{_libdir}/yacas/lib*.so*
 %{_libdir}/yacas/lib*.la
 %{_datadir}/yacas
-%{_desktopdir}/Scientific/Mathematics/*
+%{_desktopdir}/*.desktop
