@@ -8,7 +8,6 @@ Group:		Applications/Math
 Group(de):	Applikationen/Mathematik
 Group(pl):	Aplikacje/Matematyczne
 Source0:	http://www.xs4all.nl/~apinkus/%{name}-%{version}.tar.gz
-Patch0:		%{name}-gmp.patch
 URL:		http://www.xs4all.nl/~apinkus/yacas.html 
 BuildRequires:	autoconf
 BuildRequires:	automake
@@ -26,7 +25,6 @@ It supports arbitrary precision arithmetic.
 
 %prep
 %setup -q
-%patch0 -p1
 
 %build
 rm -rf missing
