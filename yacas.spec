@@ -2,12 +2,14 @@ Summary:	Yacas, a computer algebra language
 Summary(pl):	Yacas, jêzyk algebry komputerowej
 Name:		yacas
 Version:	1.0.47
-Release:	1
+Release:	2
 License:	GPL
 Group:		Applications/Math
 Group(de):	Applikationen/Mathematik
 Group(pl):	Aplikacje/Matematyczne
 Source0:	http://www.xs4all.nl/~apinkus/%{name}-%{version}.tar.gz
+Patch0:		%{name}-automake.patch
+Patch1:		%{name}-gmp.patch
 URL:		http://www.xs4all.nl/~apinkus/yacas.html 
 BuildRequires:	autoconf
 BuildRequires:	automake
@@ -25,6 +27,8 @@ It supports arbitrary precision arithmetic.
 
 %prep
 %setup -q
+%patch0 -p1
+%patch1 -p1
 
 %build
 rm -rf missing
@@ -38,7 +42,10 @@ automake -a -c
 %install
 rm -rf $RPM_BUILD_ROOT
 
-%{__make} install DESTDIR=$RPM_BUILD_ROOT
+%{__make} -C src install DESTDIR=$RPM_BUILD_ROOT
+%{__make} -C scripts install DESTDIR=$RPM_BUILD_ROOT
+
+gzip -9nf AUTHORS README
 
 %clean
 rm -rf $RPM_BUILD_ROOT
@@ -46,4 +53,9 @@ rm -rf $RPM_BUILD_ROOT
 %files
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_bindir}/*
+%doc %dir manualmaker
+%doc %dir docs
+%doc docs/*.{html,gif}
+%doc manualmaker/*.html
+%doc *.gz
 %{_datadir}/yacas
