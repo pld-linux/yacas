@@ -47,7 +47,7 @@ rm -rf $RPM_BUILD_ROOT
 
 gzip -9nf AUTHORS README
 
-rm -f manualmaker/{in,*.c,Makefile*,manualmaker,newhelp,styleplain,yacasinit.ys} \
+rm -rf manualmaker/{in,*.c,Makefile*,manualmaker,newhelp,styleplain,yacasinit.ys} \
 	docs/Makefile*
  
 %clean
