@@ -47,15 +47,14 @@ rm -rf $RPM_BUILD_ROOT
 
 gzip -9nf AUTHORS README
 
+rm -f manualmaker/{in,*.c,Makefile*,manualmaker,newhelp,styleplain,yacasinit.ys} \
+	docs/Makefile*
+ 
 %clean
 rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
+%doc *.gz manualmaker docs
 %attr(755,root,root) %{_bindir}/*
-%doc %dir manualmaker
-%doc %dir docs
-%doc docs/*.{html,gif}
-%doc manualmaker/*.html
-%doc *.gz
 %{_datadir}/yacas
