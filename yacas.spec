@@ -8,6 +8,7 @@ Group(de):	Applikationen/Mathematik
 Group(pl):	Aplikacje/Matematyczne
 Source0:	http://www.xs4all.nl/~apinkus/%{name}-%{version}.tar.gz
 URL:		http://www.xs4all.nl/~apinkus/yacas.html 
+BuildRequires:	autoconf
 BuildRequires:	automake
 BuildRequires:	gmp-devel
 BuildRequires:	libstdc++-devel
