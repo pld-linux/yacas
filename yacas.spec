@@ -26,7 +26,7 @@ It supports arbitrary precision arithmetic.
 
 %build
 autoconf
-automake
+automake -a -c
 %configure \
 	--enable-gmp
 %{__make} 
