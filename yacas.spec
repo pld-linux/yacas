@@ -1,12 +1,12 @@
 Summary:	Yacas, a computer algebra language
 Summary(pl):	Yacas, jêzyk algebry komputerowej
 Name:		yacas
-Version:	1.0.55
+Version:	1.0.56
 Release:	1
 License:	GPL
 Group:		Applications/Math
-# Source0-md5:	fd55bcd7ae276b6665cae9f63f26efc7
 Source0:	http://yacas.sourceforge.net/backups/%{name}-%{version}.tar.gz
+# Source0-md5:	cde348f0a4274e1f487b7483003cf119
 Source1:	%{name}.desktop
 Patch0:		%{name}-DESTDIR.patch
 URL:		http://yacas.sourceforge.net/
