@@ -5,8 +5,6 @@ Version:	1.0.47
 Release:	3
 License:	GPL
 Group:		Applications/Math
-Group(de):	Applikationen/Mathematik
-Group(pl):	Aplikacje/Matematyczne
 Source0:	http://www.xs4all.nl/~apinkus/%{name}-%{version}.tar.gz
 Patch0:		%{name}-automake.patch
 Patch1:		%{name}-gmp.patch
