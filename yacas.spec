@@ -54,7 +54,7 @@ rm -rf $RPM_BUILD_ROOT
 %{__make} -C scripts install DESTDIR=$RPM_BUILD_ROOT
 
 install -d $RPM_BUILD_ROOT%{_applnkdir}/Scientific/Mathematics
-install %{SOURCE1} $RPM_BUILD_ROOT%{_applnkdir}/Scientific/Mathematics
+install %{SOURCE1} $RPM_BUILD_ROOT%{_applnkdir}/Scientific/Mathematics/%{name}.desktop
 
 rm -rf manualmaker/{in,*.c,Makefile*,manualmaker,newhelp,styleplain,yacasinit.ys} \
 	docs/Makefile*
