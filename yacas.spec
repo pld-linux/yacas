@@ -8,7 +8,7 @@ Group:		Applications/Math
 Source0:	http://www.xs4all.nl/~apinkus/%{name}-%{version}.tar.gz
 Patch0:		%{name}-automake.patch
 Patch1:		%{name}-gmp.patch
-URL:		http://www.xs4all.nl/~apinkus/yacas.html 
+URL:		http://www.xs4all.nl/~apinkus/yacas.html
 BuildRequires:	autoconf
 BuildRequires:	automake
 BuildRequires:	gmp-devel
@@ -44,7 +44,7 @@ autoconf
 automake -a -c
 %configure \
 	--enable-gmp
-%{__make} 
+%{__make}
 
 %install
 rm -rf $RPM_BUILD_ROOT
@@ -56,7 +56,7 @@ gzip -9nf AUTHORS README
 
 rm -rf manualmaker/{in,*.c,Makefile*,manualmaker,newhelp,styleplain,yacasinit.ys} \
 	docs/Makefile*
- 
+
 %clean
 rm -rf $RPM_BUILD_ROOT
 
