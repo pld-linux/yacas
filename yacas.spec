@@ -1,14 +1,13 @@
 Summary:	Yacas, a computer algebra language
 Summary(pl):	Yacas, jêzyk algebry komputerowej
 Name:		yacas
-Version:	1.0.56
+Version:	1.0.57
 Release:	1
 License:	GPL
 Group:		Applications/Math
 Source0:	http://yacas.sourceforge.net/backups/%{name}-%{version}.tar.gz
-# Source0-md5:	cde348f0a4274e1f487b7483003cf119
+# Source0-md5:	0e5161457cb7d818aa8009676998696b
 Source1:	%{name}.desktop
-Patch0:		%{name}-DESTDIR.patch
 URL:		http://yacas.sourceforge.net/
 BuildRequires:	autoconf
 BuildRequires:	automake
@@ -35,7 +34,6 @@ precyzji.
 
 %prep
 %setup -q
-%patch0 -p1
 
 %build
 rm -rf missing
@@ -51,8 +49,8 @@ rm -rf $RPM_BUILD_ROOT
 %{__make} -C src install DESTDIR=$RPM_BUILD_ROOT
 %{__make} -C scripts install DESTDIR=$RPM_BUILD_ROOT
 
-install -d $RPM_BUILD_ROOT%{_applnkdir}/Scientific/Mathematics
-install %{SOURCE1} $RPM_BUILD_ROOT%{_applnkdir}/Scientific/Mathematics/%{name}.desktop
+install -d $RPM_BUILD_ROOT%{_desktopdir}/Scientific/Mathematics
+install %{SOURCE1} $RPM_BUILD_ROOT%{_desktopdir}/Scientific/Mathematics/%{name}.desktop
 
 rm -rf manualmaker/{in,*.c,Makefile*,manualmaker,newhelp,styleplain,yacasinit.ys} \
 	docs/Makefile*
@@ -73,4 +71,4 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_libdir}/yacas/lib*.so*
 %{_libdir}/yacas/lib*.la
 %{_datadir}/yacas
-%{_applnkdir}/Scientific/Mathematics/*
+%{_desktopdir}/Scientific/Mathematics/*
