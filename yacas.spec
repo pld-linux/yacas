@@ -1,4 +1,5 @@
 Summary:	Yacas, a computer algebra language
+Summary(pl):	Yacas, jêzyk algebry komputerowej
 Name:		yacas
 Version:	1.0.47
 Release:	1
@@ -7,6 +8,7 @@ Group:		Applications/Math
 Group(de):	Applikationen/Mathematik
 Group(pl):	Aplikacje/Matematyczne
 Source0:	http://www.xs4all.nl/~apinkus/%{name}-%{version}.tar.gz
+Patch0:		%{name}-gmp.patch
 URL:		http://www.xs4all.nl/~apinkus/yacas.html 
 BuildRequires:	autoconf
 BuildRequires:	automake
@@ -24,8 +26,11 @@ It supports arbitrary precision arithmetic.
 
 %prep
 %setup -q
+%patch0 -p1
 
 %build
+rm -rf missing
+aclocal
 autoconf
 automake -a -c
 %configure \
