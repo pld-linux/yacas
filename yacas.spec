@@ -39,7 +39,7 @@ precyzji.
 
 %build
 rm -rf missing
-aclocal
+%{__aclocal}
 %{__autoconf}
 %{__automake}
 %configure \
