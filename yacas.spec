@@ -1,17 +1,18 @@
-%define name yacas
-%define version 1.0.19
-%define release 2mdk
-
-Name: %{name}
-Summary: Yacas, a computer algebra language
-Version: %{version}
-Release: %{release}
-Source: %{name}-%{version}.tar.bz2
-Group: Development/Other
-URL: http://www.xs4all.nl/~apinkus/yacas.html 
-BuildRoot: /var/tmp/%{name}-buildroot
-Copyright: Freeware
-Prefix: /usr
+Summary:	Yacas, a computer algebra language
+Name:		yacas
+Version:	1.0.43
+Release:	1
+License:	GPL
+Group:		Applications/Math
+Group(de):	Applikationen/Mathematik
+Group(pl):	Aplikacje/Matematyczne
+Source0:	http://www.xs4all.nl/~apinkus/%{name}-%{version}.tar.gz
+Patch0:		%{name}-DESTDIR.patch
+URL:		http://www.xs4all.nl/~apinkus/yacas.html 
+BuildRequires:	automake
+BuildRequires:	gmp-devel
+BuildRequires:	libstdc++-devel
+BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
 Yacas (Yet Another Computer Algebra System) is a small and highly
@@ -22,47 +23,24 @@ which you can easily write your own symbolic manipulation algorithms.
 It supports arbitrary precision arithmetic.
 
 %prep
-rm -rf $RPM_BUILD_ROOT
-
 %setup -q
+%patch -p1
 
 %build
-#CFLAGS="$RPM_OPT_FLAGS" CXXFLAGS="$RPM_OPT_FLAGS"
- ./configure \	--prefix=%{prefix}
-make 
-#-j 2
+automake
+%configure \
+	--enable-gmp
+%{__make} 
 
 %install
-make install prefix=$RPM_BUILD_ROOT/%{prefix}
-install -m 755 -d $RPM_BUILD_ROOT/usr/doc/%{name}-%{version}
-install -m 644 docs/* $RPM_BUILD_ROOT/usr/doc/%{name}-%{version}
+rm -rf $RPM_BUILD_ROOT
 
-cd $RPM_BUILD_ROOT
-
-find . -type d | sed -e '1,2d;s,^\.,\%attr(-\,root\,root) \%dir ,' > \
-    $RPM_BUILD_DIR/file.list.%{name}
-
-find . -type f | sed -e 's,^\.,\%attr(-\,root\,root) ,' \
-       -e '/\/etc\//s|^|%config|' \
-       -e '/\/config\//s|^|%config|' \
-	   -e '/\/doc\//s|^|%doc|' \
-       >> $RPM_BUILD_DIR/file.list.%{name}
-
-find . -type l | sed -e 's,^\.,\%attr(-\,root\,root) ,' >> \
-    $RPM_BUILD_DIR/file.list.%{name}
-
+%{__make} install DESTDIR=$RPM_BUILD_ROOT
 
 %clean
-rm -rf $RPM_BUILD_ROOT $RPM_BUILD_DIR/file.list.%{name}
+rm -rf $RPM_BUILD_ROOT
 
-%files -f ../file.list.%{name}
-%defattr(-,root,root,0755)
-
-%changelog
-* Thu May 04 2000 Lenny Cartier <lenny@mandrakesoft.com> 1.0.19-2mdk
-- fix group
-
-* Thu Dec 02 1999 Lenny Cartier <lenny@mandrakesoft.com>
-- New in contribs
-- specfile adaptations
-- added docs
+%files
+%defattr(644,root,root,755)
+%attr(755,root,root) %{_bindir}/*
+%{_datadir}/yacas
