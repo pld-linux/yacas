@@ -1,18 +1,17 @@
 Summary:	Yacas, a computer algebra language
 Summary(pl):	Yacas, jêzyk algebry komputerowej
 Name:		yacas
-Version:	1.0.47
-Release:	4
+Version:	1.0.54
+Release:	1
 License:	GPL
 Group:		Applications/Math
-Source0:	http://www.xs4all.nl/~apinkus/%{name}-%{version}.tar.gz
+Source0:	http://yacas.sourceforge.net/backups/%{name}-%{version}.tar.gz
 Source1:	%{name}.desktop
-Patch0:		%{name}-automake.patch
-Patch1:		%{name}-gmp.patch
-URL:		http://www.xs4all.nl/~apinkus/yacas.html
+Patch0:		%{name}-DESTDIR.patch
+URL:		http://yacas.sourceforge.net/
 BuildRequires:	autoconf
 BuildRequires:	automake
-BuildRequires:	gmp-devel
+BuildRequires:	gsl-devel
 BuildRequires:	libstdc++-devel
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -36,15 +35,13 @@ precyzji.
 %prep
 %setup -q
 %patch0 -p1
-%patch1 -p1
 
 %build
 rm -rf missing
 %{__aclocal}
 %{__autoconf}
 %{__automake}
-%configure \
-	--enable-gmp
+%configure
 %{__make}
 
 %install
@@ -62,10 +59,14 @@ rm -rf manualmaker/{in,*.c,Makefile*,manualmaker,newhelp,styleplain,yacasinit.ys
 %clean
 rm -rf $RPM_BUILD_ROOT
 
-%files
+%post	-p /sbin/ldconfig
+%postun	-p /sbin/ldconfig
 
+%files
 %defattr(644,root,root,755)
-%doc AUTHORS README manualmaker docs
+%doc AUTHORS README docs
 %attr(755,root,root) %{_bindir}/*
+%attr(755,root,root) %{_libdir}/lib*.so.*
+%{_libdir}/lib*.la
 %{_datadir}/yacas
 %{_applnkdir}/Scientific/Mathematics/*
