@@ -52,8 +52,6 @@ rm -rf $RPM_BUILD_ROOT
 %{__make} -C src install DESTDIR=$RPM_BUILD_ROOT
 %{__make} -C scripts install DESTDIR=$RPM_BUILD_ROOT
 
-gzip -9nf AUTHORS README
-
 rm -rf manualmaker/{in,*.c,Makefile*,manualmaker,newhelp,styleplain,yacasinit.ys} \
 	docs/Makefile*
 
@@ -62,6 +60,6 @@ rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
-%doc *.gz manualmaker docs
+%doc AUTHORS README manualmaker docs
 %attr(755,root,root) %{_bindir}/*
 %{_datadir}/yacas
