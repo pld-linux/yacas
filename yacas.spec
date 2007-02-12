@@ -1,5 +1,5 @@
 Summary:	Yacas, a computer algebra language
-Summary(pl):	Yacas, jêzyk algebry komputerowej
+Summary(pl.UTF-8):   Yacas, jÄ™zyk algebry komputerowej
 Name:		yacas
 Version:	1.0.58
 Release:	1
@@ -23,13 +23,13 @@ mathematical functions, but its real strength is in the language in
 which you can easily write your own symbolic manipulation algorithms.
 It supports arbitrary precision arithmetic.
 
-%description -l pl
+%description -l pl.UTF-8
 Yacas (Yet Another Computer Algebra System - jeszcze jeden system
-algebry komputerowej) jest ma³ym i bardzo elastycznym jêzykiem algebry
-komputerowej. Sk³adnia u¿ywa parsera gramatyki infix-operator.
-Dystrybucja zawiera ma³± bibliotekê funkcji matematycznych, ale jej
-prawdziwa si³a le¿y w jêzyku, w którym mo¿esz ³atwo napisaæ swoje
-algorytmy obliczeñ na symbolach. Obs³uguje arytmetykê o dowolnej
+algebry komputerowej) jest maÅ‚ym i bardzo elastycznym jÄ™zykiem algebry
+komputerowej. SkÅ‚adnia uÅ¼ywa parsera gramatyki infix-operator.
+Dystrybucja zawiera maÅ‚Ä… bibliotekÄ™ funkcji matematycznych, ale jej
+prawdziwa siÅ‚a leÅ¼y w jÄ™zyku, w ktÃ³rym moÅ¼esz Å‚atwo napisaÄ‡ swoje
+algorytmy obliczeÅ„ na symbolach. ObsÅ‚uguje arytmetykÄ™ o dowolnej
 precyzji.
 
 %prep
