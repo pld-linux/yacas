@@ -1,5 +1,5 @@
 Summary:	Yacas, a computer algebra language
-Summary(pl.UTF-8):   Yacas, język algebry komputerowej
+Summary(pl.UTF-8):	Yacas, język algebry komputerowej
 Name:		yacas
 Version:	1.0.58
 Release:	1
