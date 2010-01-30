@@ -1,13 +1,14 @@
 Summary:	Yacas, a computer algebra language
 Summary(pl.UTF-8):	Yacas, język algebry komputerowej
 Name:		yacas
-Version:	1.0.58
+Version:	1.2.2
 Release:	1
 License:	GPL
 Group:		Applications/Math
 Source0:	http://yacas.sourceforge.net/backups/%{name}-%{version}.tar.gz
-# Source0-md5:	fd7fa942789fdac8fa363e555c86cae9
+# Source0-md5:	329f149ca3ceb976a7e596b56fc3cba5
 Source1:	%{name}.desktop
+Patch0:		%{name}-gcc43.patch
 URL:		http://yacas.sourceforge.net/
 BuildRequires:	autoconf
 BuildRequires:	automake
@@ -34,6 +35,7 @@ precyzji.
 
 %prep
 %setup -q
+%patch0 -p1
 
 %build
 %{__aclocal}
@@ -53,8 +55,8 @@ rm -rf $RPM_BUILD_ROOT
 install -d $RPM_BUILD_ROOT%{_desktopdir}
 install %{SOURCE1} $RPM_BUILD_ROOT%{_desktopdir}
 
-rm -rf manualmaker/{in,*.c,Makefile*,manualmaker,newhelp,styleplain,yacasinit.ys} \
-	docs/Makefile*
+rm -rf manmake/{Makefile*,{manripper,removeduplicates}{,.cpp,.o}} \
+	docs/{Makefile*,{autocompleter,riptestfromyart}{,.cpp,.o}}
 
 %clean
 rm -rf $RPM_BUILD_ROOT
@@ -64,12 +66,7 @@ rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
-%doc AUTHORS README docs
+%doc AUTHORS ChangeLog README TODO docs manmake
 %attr(755,root,root) %{_bindir}/*
-%attr(755,root,root) %{_libdir}/lib*.so.*.*.*
-%{_libdir}/lib*.la
-%dir %{_libdir}/yacas
-%attr(755,root,root) %{_libdir}/yacas/lib*.so*
-%{_libdir}/yacas/lib*.la
 %{_datadir}/yacas
 %{_desktopdir}/*.desktop
