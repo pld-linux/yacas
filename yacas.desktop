@@ -6,5 +6,5 @@ Icon=
 Exec=yacas
 Terminal=true
 Type=Application
-Categories=Science;Math;
+Categories=Education;Science;Math;
 # vi: encoding=utf-8
